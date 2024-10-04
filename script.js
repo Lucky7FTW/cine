@@ -4,7 +4,6 @@ const participantList = document.getElementById('participantList');
 const selectWinnerButton = document.getElementById('selectWinnerButton');
 const winnerDisplay = document.getElementById('winnerDisplay');
 const caseElement = document.getElementById('case');
-const rollAgainButton = document.getElementById('rollAgainButton');
 
 // Create a new button for selecting another winner
 const chooseAnotherWinnerButton = document.createElement('button');
@@ -13,6 +12,7 @@ chooseAnotherWinnerButton.style.display = 'none'; // Hide it initially
 document.querySelector('.container').appendChild(chooseAnotherWinnerButton);
 
 let participants = [];
+let isAnimating = false; // Flag to track animation state
 
 addParticipantButton.addEventListener('click', () => {
     const participantName = participantInput.value.trim();
@@ -32,7 +32,8 @@ function selectWinner() {
     const winner = participants[Math.floor(Math.random() * participants.length)];
     winnerDisplay.textContent = winner;
 
-    // Add animation classes
+    // Start animation
+    isAnimating = true; // Set the animation flag
     caseElement.classList.add('open');
 
     // Hide the select winner button and show the new button after the animation
@@ -41,6 +42,7 @@ function selectWinner() {
     // Show the new button after animation duration
     setTimeout(() => {
         chooseAnotherWinnerButton.style.display = 'block';
+        isAnimating = false; // Reset the animation flag
     }, 3000); // Match the duration of the open animation
 
     // Reset the case after the animation
@@ -52,7 +54,11 @@ function selectWinner() {
 selectWinnerButton.addEventListener('click', selectWinner);
 
 // New button functionality for choosing another winner
-chooseAnotherWinnerButton.addEventListener('click', selectWinner);
+chooseAnotherWinnerButton.addEventListener('click', () => {
+    if (!isAnimating) { // Check if not animating
+        selectWinner(); // Call selectWinner function
+    }
+});
 
 function updateParticipantList() {
     participantList.innerHTML = '';

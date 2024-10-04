@@ -1,51 +1,64 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    font-family: 'Old Standard TT';
+    background: url('poze/plaja.jpg') no-repeat center center fixed;
+    background-size: cover;
     margin: 0;
     padding: 20px;
 }
 
 .container {
-    background-color: #ffffff;
-    border-radius: 8px;
+    background-image: url('poze/pergament.jpg');
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
     max-width: 400px;
     margin: auto;
+    border: 2px solid #c1c1c1;
 }
 
 h1 {
     text-align: center;
     margin-bottom: 20px;
+    color: #333;
 }
 
 input[type="text"] {
     width: calc(100% - 30px);
     padding: 10px;
-    margin-bottom: 10px;
-    border: 2px solid #007BFF;
+    margin-bottom: 15px;
+    border: 2px solid #3f1b01;
     border-radius: 5px;
     transition: border-color 0.3s;
+    font-size: 16px;
 }
 
 input[type="text"]:focus {
-    border-color: #0056b3;
+    border-color: #3f1b01;
+    outline: none;
 }
 
 button {
     padding: 10px 15px;
     margin-top: 10px;
     cursor: pointer;
-    background-color: #007BFF;
+    background-color: #3f1b01;
     color: #ffffff;
     border: none;
     border-radius: 5px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-size: 16px;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #3f1b01;
+    transform: scale(1.05);
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
 }
 
 ul {
@@ -56,14 +69,15 @@ ul {
 
 li {
     padding: 5px 0;
+    border-bottom: 1px solid #e0e0e0;
 }
 
 .case {
     position: relative;
     width: 100%;
     height: 200px;
-    background-color: #f9f9f9;
-    border: 2px solid #007BFF;
+    background-size: cover;
+    border: 2px solid #3f1b01;
     border-radius: 5px;
     overflow: hidden;
     margin-top: 20px;
@@ -73,8 +87,9 @@ li {
 .lid {
     position: absolute;
     width: 100%;
-    height: 100%; /* Cover the whole case */
-    background-color: #007BFF;
+    height: 100%;
+    background-color: #3f1b01;
+    background-size: cover;
     top: 0;
     left: 0;
     transform-origin: top;
@@ -98,4 +113,6 @@ li {
 
 .open .content {
     opacity: 1;
+    font-size: 20px;
+    color: #333;
 }

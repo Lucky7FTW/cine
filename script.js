@@ -56,9 +56,28 @@ chooseAnotherWinnerButton.addEventListener('click', () => {
 
 function updateParticipantList() {
     participantList.innerHTML = '';
-    participants.forEach(participant => {
+    participants.forEach((participant, index) => {
         const li = document.createElement('li');
-        li.textContent = participant;
+        li.style.display = 'flex';  
+        li.style.justifyContent = 'space-between'; 
+        li.style.alignItems = 'center';
+
+        const participantText = document.createElement('span');
+        participantText.textContent = participant;
+
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Șterge';
+        deleteButton.addEventListener('click', () => {
+            deleteParticipant(index);
+        });
+
+        li.appendChild(participantText);
+        li.appendChild(deleteButton);    
         participantList.appendChild(li);
     });
+}
+
+function deleteParticipant(index) {
+    participants.splice(index, 1); 
+    updateParticipantList(); 
 }
